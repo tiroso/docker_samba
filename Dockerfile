@@ -11,7 +11,7 @@ RUN mkdir /share \
     && echo "workgroup = WORKGROUP" >> /etc/samba/smb.conf \
     && echo "dos charset = cp850" >> /etc/samba/smb.conf \
     && echo "unix charset = ISO-8859-1" >> /etc/samba/smb.conf \
-    && echo "force user = username" >> /etc/samba/smb.conf \
+    && echo "force user = smbuser" >> /etc/samba/smb.conf \
     && echo "" >> /etc/samba/smb.conf \
     && echo "[storage]" >> /etc/samba/smb.conf \
     && echo "browseable = yes" >> /etc/samba/smb.conf \
