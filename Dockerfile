@@ -2,24 +2,11 @@ FROM alpine:edge
 
 RUN apk add --update \
     samba-common-tools \
+    samba-client \
     samba-server \
     && rm -rf /var/cache/apk/*
 
-RUN mkdir /share \
-    && chmod 0777 /share \
-    && echo "[global]" > /etc/samba/smb.conf \
-    && echo "workgroup = WORKGROUP" >> /etc/samba/smb.conf \
-    && echo "dos charset = cp850" >> /etc/samba/smb.conf \
-    && echo "unix charset = ISO-8859-1" >> /etc/samba/smb.conf \
-    && echo "force user = smbuser" >> /etc/samba/smb.conf \
-    && echo "" >> /etc/samba/smb.conf \
-    && echo "[storage]" >> /etc/samba/smb.conf \
-    && echo "browseable = yes" >> /etc/samba/smb.conf \
-    && echo "writeable = yes" >> /etc/samba/smb.conf \
-    && echo "path = /share" >> /etc/samba/smb.conf \
-    && adduser -H -D smbuser \
-    && (echo "password"; sleep 1; echo "password";) | passwd smbuser \
-    && (echo "password"; sleep 1; echo "password" ) | smbpasswd -s -a smbuser
+EXPOSE 445/tcp
 
 ENTRYPOINT ["smbd", "--foreground", "--log-stdout"]
 CMD []
