@@ -8,5 +8,5 @@ RUN apk add --update \
 
 EXPOSE 445/tcp
 
-ENTRYPOINT ["smbd", "--foreground", "--log-stdout"]
+ENTRYPOINT ["smbd", "--foreground", "-i", "--log-stdout"]
 CMD []
