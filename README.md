@@ -1,17 +1,17 @@
-# docker_samba
+<h1>Samba</h1>
+<p>You have to setup a "<i>smb.conf</i>" in your home directory or somwhere else. You can use my smb.conf.example in this repository.</p>
 
-docker build https://github.com/tiroso/docker_samba.git#master  --tag tiroso/samba
+<h2>Build Image</h2>
+<p><code>docker build https://github.com/tiroso/docker_samba.git#master  --tag tiroso/samba</code></p>
 
-docker run -dt -v $PWD/smb.conf:/etc/samba/smb.conf -v fhem-smartvisu:/share -p 445:445 --restart=always --name samba tiroso/samba
+<h2>Pull Image</h2>
+<p><code>docker pull tiroso/samba</code></p>
 
+<h2>Run Container</h2>
+<p><code>docker run -dt -v $PWD/smb.conf:/etc/samba/smb.conf -v fhem-server:/fhem-server -v fhem-smartvisu:/fhem-smartvisu -p 445:445 --restart=always --name samba tiroso/samba</code></p>
 
-docker exec -it samba adduser -s /sbin/nologin -h /home/samba -H -D carol
-
-docker exec -it samba smbpasswd -a carol
-
-
-
-
-
-
-https://github.com/Stanback/alpine-samba
+<h2>User in Container</h2>
+<p>I've setup the image without some user based on the repository https://github.com/Stanback/alpine-samba.</p>
+<h3>Create a new user</h3>
+<p><code>docker exec -it samba adduser -s /sbin/nologin -h /home/samba -H -D tiroso</code><br>
+  <code>docker exec -it samba smbpasswd -a tiroso</code></p>
