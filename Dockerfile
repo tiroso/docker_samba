@@ -17,7 +17,7 @@ RUN mkdir /share \
     && echo "browseable = yes" >> /etc/samba/smb.conf \
     && echo "writeable = yes" >> /etc/samba/smb.conf \
     && echo "path = /share" >> /etc/samba/smb.conf \
-    && adduser -H smbuser \
+    && adduser -H -D smbuser \
     && (echo "password"; sleep 1; echo "password";) | passwd smbuser \
     && (echo "password"; sleep 1; echo "password" ) | smbpasswd -s -a smbuser
 
