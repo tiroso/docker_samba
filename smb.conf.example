@@ -15,17 +15,24 @@
   ;name resolve order = hosts
   ;log level = 3
 
-[ShareUser]
-  path = /dozer
+[FhemServer]
+  path = /fhem-server
   comment = ZFS
   browseable = yes
   writable = yes
-  valid users = MaxMustermann
-
-[ShareGuest]
-  path = /share
-  comment = Shared Folder
+  valid users = tiroso
+  
+[Smartvisu]
+  path = /fhem-smartvisu
+  comment = ZFS
   browseable = yes
-  read only = yes
-  write list = MaxMustermann
-  guest ok = yes
+  writable = yes
+  valid users = tiroso
+
+#[ShareGuest]
+#  path = /share
+#  comment = Shared Folder
+#  browseable = yes
+#  read only = yes
+#  write list = tiroso
+#  guest ok = yes
