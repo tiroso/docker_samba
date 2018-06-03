@@ -17,9 +17,9 @@ RUN mkdir /share \
     && echo "browseable = yes" >> /etc/samba/smb.conf \
     && echo "writeable = yes" >> /etc/samba/smb.conf \
     && echo "path = /share" >> /etc/samba/smb.conf \
-    && /etc/default/useradd -m smbuser \
+    && adduser -m smbuser \
     && (echo "password"; sleep 1; echo "password";) | passwd smbuser \
-    && (echo "password"; sleep 1; echo "password" ) | sudo smbpasswd -s -a smbuser
+    && (echo "password"; sleep 1; echo "password" ) | smbpasswd -s -a smbuser
 
 ENTRYPOINT ["smbd", "--foreground", "--log-stdout"]
 CMD []
